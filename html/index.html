@@ -18,6 +18,11 @@
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
         </nav>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
 
     <section id="home" class="home">
@@ -96,5 +101,14 @@
         </div>
         <p>&copy; 2024 DimasBimo. All rights reserved.</p>
     </footer>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navbar = document.querySelector('.navbar');
+    
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navbar.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

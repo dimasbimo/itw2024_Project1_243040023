@@ -43,6 +43,60 @@ body {
     color: #ff6347;
 }
 
+/* Hamburger Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Navbar Hidden (Mobile View) */
+.navbar {
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #222;
+    text-align: center;
+    padding: 1rem 0;
+    z-index: 999;
+}
+
+.navbar a {
+    margin: 0.5rem 0;
+}
+
+/* Hamburger Animation When Active */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
 /* Home Section */
 .home {
     display: flex;
@@ -94,6 +148,11 @@ body {
     background-color: #e5533f;
 }
 
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 /* Section Titles */
 section h2 {
     text-align: center;
@@ -128,11 +187,18 @@ section h2 {
     height: 800px;
     display: grid;
     align-items: center;
+    padding-top: 3rem;
+}
+
+#services h2 {
+    text-align: center;
+    margin-bottom: 2rem; /* Tambahin jarak bawah */
+    position: static; /* Hapus efek posisi absolute kalau ada */
 }
 
 .h2 {
-    position: absolute;
-    top: 1900px;
+    position: relative;
+    top: auto;
 }
 
 .services {
@@ -162,11 +228,18 @@ section h2 {
     background-color: #ff6347;
     display: grid;
     align-items: center;
+    padding-top: 3rem;
+}
+
+#skills h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: static;
 }
 
 .h3 {
-    position: absolute;
-    top: 2700px;
+    position: relative;
+    top: auto;
 }
 
 .skills {
@@ -268,15 +341,13 @@ footer .social a:hover {
 
     .services,
     .skills {
-        flex-direction: column;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 1rem;
+        overflow: hidden;
     }
 
-    .services div,
-    .skills div {
-        width: 90%;
-        margin: 0 auto;
-    }
 }
 
 @media (max-width: 768px) {
@@ -308,6 +379,26 @@ footer .social a:hover {
     .skills div {
         max-width: 100%;
         padding: 1rem;
+    }
+
+    #services h2 {
+        margin-bottom: 1rem; /* Kurangi jarak kalau terlalu lebar */
+    }
+
+    .services div {
+        margin: 1rem auto; /* Pastikan card posisinya center */
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar.active {
+        display: flex;
     }
 }
 
@@ -357,5 +448,10 @@ footer .social a:hover {
 
     footer .social a {
         font-size: 1.2rem;
+    }
+
+    .services div, .skills div {
+        flex: 1 1 100%;
+        max-width: none;
     }
 }
